@@ -3,10 +3,10 @@ name: Prod Code Pipeline
 on:
   push:
     branches:
-      - 'main'
+      - 'prod'
   pull_request:
     branches:
-      - 'main'
+      - 'prod'
 
 permissions:
   id-token: write

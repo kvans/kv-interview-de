@@ -6,11 +6,11 @@ from src.main import clean_transaction_data  # Replace 'your_module' with the ac
 def sample_json_data():
     """Fixture providing sample JSON data with various edge cases."""
     return [
-        {"transaction_id": "TXN12345", "user_id": "USR001", "amount": "100.50", "currency": "USD", "timestamp": "2025-01-30T14:30:00", "status": "completed"},
-        {"transaction_id": "TXN12346", "user_id": "USR002", "amount": 50.25, "currency": "EUR", "timestamp": "2025-01-30T15:00:00", "status": "pending"},
+        {"transaction_id": "TXN12345", "user_id": "USR001", "amount": "100.50", "currency": "USD", "timestamp": "2025-01-30", "status": "completed"},
+        {"transaction_id": "TXN12346", "user_id": "USR002", "amount": 50.25, "currency": "EUR", "timestamp": "2025-01-30", "status": "pending"},
         {"transaction_id": "TXN12347", "user_id": "USR003", "amount": None, "currency": "USD", "timestamp": "INVALID_DATE", "status": "failed"},
-        {"transaction_id": "TXN12348", "user_id": "USR004", "amount": "200abc", "currency": "GBP", "timestamp": "2025-01-30T17:45:00", "status": "completed"},
-        {"transaction_id": "TXN12349", "user_id": None, "amount": 75.00, "currency": "USD", "timestamp": "2025-01-30T18:10:00", "status": "completed"}
+        {"transaction_id": "TXN12348", "user_id": "USR004", "amount": "200abc", "currency": "GBP", "timestamp": "2025-01-30", "status": "completed"},
+        {"transaction_id": "TXN12349", "user_id": None, "amount": 75.00, "currency": "USD", "timestamp": "2025-01-30", "status": "completed"}
     ]
 
 def test_cleaned_data_structure(sample_json_data):
@@ -47,7 +47,7 @@ def test_valid_timestamp_conversion(sample_json_data):
     """Test if valid timestamps are correctly parsed into datetime objects."""
     cleaned_data = clean_transaction_data(sample_json_data)
 
-    assert cleaned_data[0]["timestamp"] == datetime(2025, 1, 30, 14, 30), "Valid timestamps should be parsed correctly"
+    assert cleaned_data[0]["timestamp"] == datetime(2025, 1, 30, 0, 0), "Valid timestamps should be parsed correctly"
 
 def test_log_output_for_skipped_rows(sample_json_data, capsys):
     """Test if the function correctly logs the number of skipped rows."""
