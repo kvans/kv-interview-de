@@ -30,4 +30,4 @@ exclude = [
     ".git",        # No need to traverse our git directory
     "__pycache__",
 ]
-extend-ignore = []
+extend-ignore = ["E302","E222","E261","E303","E265","E265","E305"]
